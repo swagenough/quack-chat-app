@@ -9,7 +9,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(morgan('tiny'))
 app.use(cookieParser());
@@ -19,7 +19,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
 app.listen(PORT, () => {
-    console.log(`Currently listening on ${PORT}`);
+    console.log(`Server is running on ${PORT}`);
 })
 
 // Todo: Add socket.io to the server
