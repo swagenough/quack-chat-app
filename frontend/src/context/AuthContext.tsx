@@ -1,4 +1,5 @@
-import { createContext, SetStateAction, Dispatch, ReactNode, useState, useEffect, useContext } from "react";
+import { Dispatch, ReactNode, SetStateAction, createContext, useContext, useEffect, useState } from "react";
+import toast from 'react-hot-toast';
 
 type AuthUserType = {
     id: string;
@@ -22,7 +23,7 @@ export const useAuthContext = () => {
     return useContext(AuthContext);
 }
 
-export const AuthContextProvider = ({children}:{children:ReactNode}) => {
+export const AuthContextProvider = ({ children }:{ children: ReactNode }) => {
     const [authUser, setAuthUser] = useState<AuthUserType | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     
@@ -31,14 +32,15 @@ export const AuthContextProvider = ({children}:{children:ReactNode}) => {
             try {
                 const res = await fetch("/api/auth/me")
                 const data = await res.json();
-                
+
                 if (!res.ok) {
-                    throw new Error(data.message);
+                    throw new Error(`Error fetching user data`);
                 }
 
                 setAuthUser(data);
-            } catch (error) {
+            } catch (error: any) {
                 console.error(error);
+                toast.error(error.message, {id: "auth-error"});
             } finally {
                 setIsLoading(false);
             }

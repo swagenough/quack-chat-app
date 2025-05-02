@@ -14,7 +14,10 @@
     "@types/cookie-parser": "^1.4.8",
     "@types/express": "^5.0.1",
     "@types/jsonwebtoken": "^9.0.9",
+    "@types/morgan": "^1.9.9",
+    "i": "^0.3.7",
     "nodemon": "^3.1.10",
+    "npm": "^11.3.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   },
@@ -25,6 +28,7 @@
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
     "prisma": "^6.7.0",
     "react-router-dom": "^7.5.3"
   }

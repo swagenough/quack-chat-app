@@ -1,6 +1,6 @@
 import express from 'express'
 import cookieParser from 'cookie-parser';
-
+import morgan from 'morgan';
 
 import authRoutes from './routes/auth.route.js';
 import messageRoutes from './routes/message.route.js';
@@ -11,6 +11,7 @@ dotenv.config();
 const app = express();
 const PORT = 3000;
 
+app.use(morgan('tiny'))
 app.use(cookieParser());
 app.use(express.json()); // for parsing application/json
 
