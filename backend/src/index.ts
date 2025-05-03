@@ -6,9 +6,9 @@ import authRoutes from './routes/auth.route.js';
 import messageRoutes from './routes/message.route.js';
 
 import dotenv from 'dotenv';
+import { app, server } from './socket/socket.js';
 dotenv.config();
 
-const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(morgan('tiny'))
@@ -18,9 +18,8 @@ app.use(express.json()); // for parsing application/json
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`Server is running on ${PORT}`);
 })
 
-// Todo: Add socket.io to the server
 // Todo: configure this server for deployment
