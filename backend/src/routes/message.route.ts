@@ -4,10 +4,6 @@ import messageController from '../controllers/message.controller.js'
 
 const router = express.Router();
 
-// router.get("/conversations", (req, res) => {
-//     res.send("Conversation route");
-// })
-
 router.get("/conversations", protectRoute.protectRoute, messageController.getUsersForSidebar);
 
 router.get("/:id", protectRoute.protectRoute, messageController.getMessage);
